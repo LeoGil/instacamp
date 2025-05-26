@@ -27,19 +27,19 @@ class CommentController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
-        if (auth()->id() !== $comment->user_id || auth()->id() !== $comment->post->user_id) {
+        if (auth()->id() !== $comment->user_id || auth()->id() !== $post->user_id) {
             abort(403, 'Unauthorized action.');
         }
 
-        $postId = $comment->post_id;
+        $postId = $post->id;
         $comment->delete();
 
         return redirect()->route('posts.show', $postId);

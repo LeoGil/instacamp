@@ -7,7 +7,7 @@ use MongoDB\Laravel\Relations\BelongsTo;
 
 class Post extends Model
 {
-    protected $connection = 'posts';
+    protected $connection = 'mongodb';
     protected $table = 'posts';
 
     protected $fillable = [

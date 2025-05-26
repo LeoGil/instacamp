@@ -9,7 +9,7 @@
                     <div class="card-header d-flex align-items-center">
                         @if($post->user)
                             <img src="{{ $post->user->profile_image ? asset('storage/' . $post->user->profile_image) : 'https://via.placeholder.com/40' }}" class="rounded-circle me-3" style="width: 40px; height: 40px;">
-                            <a href="{{ route('profile.show', $post->user->id) }}" class="text-dark text-decoration-none">
+                            <a href="{{ route('users.show', $post->user->id) }}" class="text-dark text-decoration-none">
                                 <strong>{{ $post->user->username }}</strong>
                             </a>
                         @else

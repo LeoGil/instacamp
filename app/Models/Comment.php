@@ -7,7 +7,7 @@ use MongoDB\Laravel\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    protected $connection = 'posts';
+    protected $connection = 'mongodb';
     protected $table = 'comments';
 
     protected $fillable = [

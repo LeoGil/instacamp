@@ -7,7 +7,7 @@ use MongoDB\Laravel\Relations\BelongsTo;
 
 class Like extends Model
 {
-    protected $connection = 'posts';
+    protected $connection = 'mongodb';
     protected $table = 'likes';
 
     protected $fillable = [
