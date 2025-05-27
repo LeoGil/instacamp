@@ -39,7 +39,6 @@ class UserController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'username' => 'required|unique:users,username',
             'bio' => 'required',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
