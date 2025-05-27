@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="d-flex mb-2">
                             @if($post->likes->where('user_id', auth()->id())->count() > 0)
-                                <form action="{{ route('likes.destroy', $post->id) }}" method="POST">
+                                <form action="{{ route('posts.likes.destroy', [$post, $post->likes->where('user_id', auth()->id())->first()]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-link p-0 me-2">
@@ -29,7 +29,7 @@
                                     </button>
                                 </form>
                             @else
-                                <form action="{{ route('likes.store', $post->id) }}" method="POST">
+                                <form action="{{ route('posts.likes.store', $post) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-link p-0 me-2">
                                         <i class="far fa-heart"></i>

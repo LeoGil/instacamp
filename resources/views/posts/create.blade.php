@@ -23,7 +23,7 @@
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                            <input type="file" accept="image/jpeg, image/jpg, image/png, image/gif" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

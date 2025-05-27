@@ -14,5 +14,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('posts', PostController::class);
     Route::resource('users', UserController::class)->only(['show', 'edit', 'update']);
     Route::resource('posts.comments', CommentController::class)->only(['store', 'destroy']);
-    Route::resource('likes', LikeController::class)->only(['store', 'destroy']);
+    Route::resource('posts.likes', LikeController::class)->only(['store', 'destroy']);
 });

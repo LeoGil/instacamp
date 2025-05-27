@@ -48,7 +48,7 @@
             
             <div class="d-flex mb-2">
                 @if($post->likes->where('user_id', auth()->id())->count() > 0)
-                    <form action="{{ route('likes.destroy', $post->id) }}" method="POST">
+                    <form action="{{ route('posts.likes.destroy', [$post, $post->likes->where('user_id', auth()->id())->first()]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-link p-0 me-2">
@@ -56,7 +56,7 @@
                         </button>
                     </form>
                 @else
-                    <form action="{{ route('likes.store', $post->id) }}" method="POST">
+                    <form action="{{ route('posts.likes.store', $post) }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-link p-0 me-2">
                             <i class="far fa-heart"></i>
@@ -73,7 +73,9 @@
                 @foreach($post->comments as $comment)
                     <div class="d-flex mb-2">
                         @if($comment->user)
-                            <strong class="me-2">{{ $comment->user->username }}</strong>
+                            <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark text-decoration-none">
+                                <strong class="me-2">{{ $comment->user->username }}</strong>
+                            </a>
                         @else
                             <strong class="me-2">Deleted User</strong>
                         @endif
